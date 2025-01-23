@@ -9,33 +9,34 @@
 <body>
   <header>
     <h1>Transaction Manager</h1>
-    <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="workerRecord.html">Worker Record</a></li>
+      </ul>
+      <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
+    </nav>
   </header>
 
-  <table id="transactionTable">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Notes</th>
-        <th>Debit (₹)</th>
-        <th>Credit (₹)</th>
-        <th>Total Balance (₹)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Transaction entries will be added here dynamically -->
-    </tbody>
-  </table>
+  <main>
+    <h2>Select Category to Add Transactions</h2>
+    <select id="categorySelect" onchange="loadTransactions(this.value)">
+      <option value="customer">Customer</option>
+      <option value="vendor">Vendor</option>
+      <option value="worker">Worker</option>
+    </select>
 
-  <button id="downloadBtn">Download as PDF</button>
+    <div id="transactionTableContainer">
+      <!-- Dynamic Transaction Table will be loaded here based on selection -->
+    </div>
 
-  <footer>
-    <p>&copy; Developed by Radhika</p>
-  </footer>
+    <footer>
+      <p>&copy; Developed by Radhika</p>
+    </footer>
+  </main>
 
-  <script src="jsPDF.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
