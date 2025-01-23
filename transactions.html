@@ -12,11 +12,14 @@
     <nav>
       <div class="hamburger" onclick="toggleMenu()">☰</div>
       <ul id="navList">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Personal Records</a></li>
         <li><a href="transactions.html">Transactions</a></li>
-        <li><a href="workerRecord.html">Worker Record</a></li>
+        <li><a href="transaction_history.html">Transaction History</a></li>
       </ul>
-      <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
+      <label class="switch">
+        <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+        <span class="slider round"></span>
+      </label>
     </nav>
   </header>
 
