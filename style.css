@@ -1,7 +1,7 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* Reset and Basic Styles */
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -17,8 +17,9 @@ body {
 header {
   background-color: #00796b;
   color: white;
-  padding: 20px;
+  padding: 20px 0;
   text-align: center;
+  font-size: 24px;
 }
 
 nav {
@@ -48,30 +49,49 @@ nav ul li {
   list-style-type: none;
 }
 
-@media screen and (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    background-color: #00796b;
-    top: 60px;
-    left: 0;
-    width: 100%;
-  }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
 
-  nav ul.active {
-    display: block;
-  }
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-  nav .hamburger {
-    display: block;
-    cursor: pointer;
-  }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 50px;
+}
 
-  nav ul li {
-    padding: 10px;
-    text-align: center;
-  }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #00796b;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
 }
 
 /* Flexbox Layout for Sections */
@@ -83,11 +103,106 @@ nav ul li {
 
 .section {
   flex: 1;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
   margin: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  margin-bottom: 20px;
+  color: #00796b;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004d40;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  color: #00796b;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode header {
+  background-color: #004d40;
+}
+
+body.dark-mode nav {
+  background-color: #004d40;
+}
+
+body.dark-mode .section {
+  background-color: #444;
+}
+
+body.dark-mode button {
+  background-color: #004d40;
+}
+
+body.dark-mode footer {
+  color: white;
+}
+
+/* Transaction Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #00796b;
+  color: white;
+}
+
+table td.debit {
+  color: red;
+}
+
+table td.credit {
+  color: green;
+}
+
+table td.totalBalance {
+  font-weight: bold;
+}
+
+table td img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 /* Button Styles */
@@ -104,9 +219,14 @@ button:hover {
   background-color: #004d40;
 }
 
-footer {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 30px;
-  color: #00796b;
+.pdf-button {
+  background-color: #f44336;
+  margin: 20px 0;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.pdf-button:hover {
+  background-color: #d32f2f;
 }
