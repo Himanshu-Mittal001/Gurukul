@@ -92,7 +92,7 @@ function populateTransactionTable(category) {
   document.querySelector("#transactionTableContainer table tbody").innerHTML = rows;
 }
 
-// Handling Transaction Form Submission
+// Handle the Transaction Form Submission
 document.getElementById("transactionForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const transactionDate = document.getElementById("transactionDate").value;
@@ -103,3 +103,20 @@ document.getElementById("transactionForm").addEventListener("submit", function(e
 
   alert('Entries Saved Successfully!');
 });
+
+// Generate PDF for the Entire Page Content
+function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text('Transaction Report', 20, 20);
+
+  // Capture the entire page content and add it to the PDF
+  doc.html(document.body, {
+    callback: function (doc) {
+      doc.save('transaction_report.pdf');
+    },
+    margin: [10, 10, 10, 10],
+    html2canvas: { scale: 4 }
+  });
+}
