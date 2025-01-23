@@ -6,20 +6,93 @@ function toggleMenu() {
 
 // Toggle Dark/Light Mode
 function toggleMode() {
-  document.body.classList.toggle("dark-mode");
-  const modeText = document.body.classList.contains("dark-mode") ? "Switch to Light Mode" : "Switch to Dark Mode";
-  document.getElementById("toggleMode").textContent = modeText;
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+  const modeToggle = document.getElementById("modeToggle");
+
+  if (body.classList.contains("dark-mode")) {
+    modeToggle.checked = true;
+  } else {
+    modeToggle.checked = false;
+  }
 }
 
-// Handle form submissions for Customer, Vendor, Worker records
-// Add dynamic entries to the page
-
-// Load Transactions based on Category Selection
+// Load Transaction Table Based on Category Selection
 function loadTransactions(category) {
-  // Populate the table with the selected category data
+  let tableHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Note</th>
+          <th>Debit (₹)</th>
+          <th>Credit (₹)</th>
+          <th>Total Balance (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows will be added here based on transactions -->
+      </tbody>
+    </table>
+    <form id="transactionForm">
+      <input type="date" id="transactionDate" required>
+      <button type="submit">Save Entries</button>
+    </form>
+  `;
+  document.getElementById("transactionTableContainer").innerHTML = tableHTML;
+
+  // Populate the transaction table based on selected category
+  populateTransactionTable(category);
 }
 
-// Handle transaction form submission and display success popup
+// Populate the Transaction Table
+function populateTransactionTable(category) {
+  let rows = '';
+  
+  if (category === 'customer') {
+    rows = `
+      <tr>
+        <td><img src="images/sample1.jpg" alt="Customer Image" class="circular-img"></td>
+        <td>John Doe</td>
+        <td>Regular</td>
+        <td><input type="text" placeholder="Notes"></td>
+        <td class="debit">1000</td>
+        <td class="credit">5000</td>
+        <td class="totalBalance" style="color:green">4000</td>
+      </tr>
+    `;
+  } else if (category === 'vendor') {
+    rows = `
+      <tr>
+        <td><img src="images/sample2.jpg" alt="Vendor Image" class="circular-img"></td>
+        <td>ABC Corp</td>
+        <td>Electronics</td>
+        <td><input type="text" placeholder="Notes"></td>
+        <td class="debit">500</td>
+        <td class="credit">3000</td>
+        <td class="totalBalance" style="color:green">2500</td>
+      </tr>
+    `;
+  } else if (category === 'worker') {
+    rows = `
+      <tr>
+        <td><img src="images/sample1.jpg" alt="Worker Image" class="circular-img"></td>
+        <td>Mark Twain</td>
+        <td>Manager</td>
+        <td><input type="text" placeholder="Notes"></td>
+        <td class="debit">3000</td>
+        <td class="credit">7000</td>
+        <td class="totalBalance" style="color:green">4000</td>
+      </tr>
+    `;
+  }
+
+  document.querySelector("#transactionTableContainer table tbody").innerHTML = rows;
+}
+
+// Handling Transaction Form Submission
 document.getElementById("transactionForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const transactionDate = document.getElementById("transactionDate").value;
@@ -27,6 +100,6 @@ document.getElementById("transactionForm").addEventListener("submit", function(e
     alert('Date is required!');
     return;
   }
-  // Add transactions to table
+
   alert('Entries Saved Successfully!');
 });
