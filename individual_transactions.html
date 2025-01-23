@@ -14,28 +14,22 @@
       <ul id="navList">
         <li><a href="index.html">Home</a></li>
         <li><a href="transactions.html">Transactions</a></li>
-        <li><a href="workerRecord.html">Worker Record</a></li>
+        <li><a href="transaction_history.html">Transaction History</a></li>
       </ul>
-      <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
     </nav>
   </header>
 
   <main>
-    <h2>Transactions for: <span id="individualName"></span></h2>
+    <h2>Select Individual</h2>
+    <select id="individualSelect" onchange="loadIndividualTransactions(this.value)">
+      <option value="customer">John Doe</option>
+      <option value="vendor">ABC Corp</option>
+      <option value="worker">Mark Twain</option>
+    </select>
 
-    <table id="individualTransactionTable">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Debit (₹)</th>
-          <th>Credit (₹)</th>
-          <th>Total Balance (₹)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Individual transactions will be displayed here -->
-      </tbody>
-    </table>
+    <div id="individualTransactionTable">
+      <!-- Individual transactions will be displayed here -->
+    </div>
 
     <footer>
       <p>&copy; Developed by Radhika</p>
