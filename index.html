@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Record - Daily Sales</title>
+  <title>Personal Records</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Personal Record - Daily Sales</h1>
-    <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
+    <h1>Manage Personal Records</h1>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="workerRecord.html">Worker Record</a></li>
+      </ul>
+      <button id="toggleMode" onclick="toggleMode()">Switch to Dark Mode</button>
+    </nav>
   </header>
 
-  <form id="personalRecordForm">
-    <input type="text" id="name" placeholder="Name" required>
-    <input type="text" id="category" placeholder="Category" required>
-    <input type="text" id="guardianName" placeholder="Guardian Name" required>
-    <input type="tel" id="contactNumbers" placeholder="Contact Numbers" required>
-    <textarea id="address" placeholder="Address" required></textarea>
-    <input type="file" id="image" accept="image/*">
-    <button type="submit">Save Record</button>
-  </form>
+  <main>
+    <div class="records-section">
+      <!-- Personal Records Forms (Customers, Vendors, Workers) -->
+      <div class="section" id="customers">
+        <h2>Customers</h2>
+        <form id="customerForm">
+          <input type="text" id="customerName" placeholder="Name" required>
+          <input type="text" id="customerCategory" placeholder="Category" required>
+          <textarea id="customerAddress" placeholder="Address" required></textarea>
+          <input type="tel" id="customerContact" placeholder="Contact Numbers" required>
+          <input type="file" id="customerImage" accept="image/*">
+          <button type="submit">Save Customer Record</button>
+        </form>
+        <div id="customerRecords">
+          <!-- Customer records will be displayed here -->
+        </div>
+      </div>
 
-  <div id="records">
-    <!-- Personal records will be displayed here -->
-  </div>
+      <!-- Similar sections for Vendor and Worker records will be placed here -->
+    </div>
+  </main>
 
   <footer>
     <p>&copy; Developed by Radhika</p>
